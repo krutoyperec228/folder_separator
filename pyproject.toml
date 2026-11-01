@@ -1,0 +1,47 @@
+[project]
+name = "zipper-gui"
+version = "1.0.0"
+description = "Group files into ZIP archives of a target size (GUI + CLI)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Your Name" }]
+keywords = ["zip", "archive", "gui", "tkinter", "utility"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: System :: Archiving :: Compression",
+    "Environment :: X11 Applications",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pyinstaller>=6.0",
+]
+
+[project.gui-scripts]
+zipper-gui = "zipper.gui:main"
+
+[project.scripts]
+zipper = "zipper.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zipper"]
+
+[tool.uv]
+# по умолчанию ставим и dev-зависимости
+default-groups = ["dev"]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.0",
+]
